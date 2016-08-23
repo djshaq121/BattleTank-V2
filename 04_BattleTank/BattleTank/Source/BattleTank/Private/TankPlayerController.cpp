@@ -2,6 +2,7 @@
 
 #include "BattleTank.h"
 #include "TankAimingComponent.h"
+#include "Tank.h"
 #include "TankPlayerController.h"
 
 
@@ -11,6 +12,26 @@ void ATankPlayerController::BeginPlay()
 	auto AimingComponent = GetPawn()->FindComponentByClass<UTankAimingComponent>();
 	if (!ensure(AimingComponent)) { return; }
 	FoundAimingComponent(AimingComponent);
+}
+
+
+void  ATankPlayerController::SetPawn(APawn* InPawn)
+{
+	Super::SetPawn(InPawn);
+	if (InPawn)
+	{
+		auto PossessedTank = Cast<ATank>(InPawn);
+		if (!ensure(PossessedTank)) { return; }
+
+		//Subscribe our local methods to the tank deaths
+		PossessedTank->OnDeath.AddUniqueDynamic(this, &ATankPlayerController::OnPossesTankDeath);
+	}
+}
+
+void ATankPlayerController::OnPossesTankDeath()
+{
+	StartSpectatingOnly();
+
 }
 
 void ATankPlayerController::Tick(float DeltaTime)
