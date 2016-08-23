@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+//Copyright Shaquille Etienne
 
 #include "BattleTank.h"
 #include "BattleTankGameMode.h"

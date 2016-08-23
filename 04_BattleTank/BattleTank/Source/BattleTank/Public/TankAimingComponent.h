@@ -1,4 +1,4 @@
-// Copyright EmbraceIT Ltd.
+// //Copyright Shaquille Etienne.
 
 #pragma once
 

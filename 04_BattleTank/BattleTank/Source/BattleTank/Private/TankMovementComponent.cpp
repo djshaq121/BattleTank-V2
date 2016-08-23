@@ -1,4 +1,4 @@
-// Copyright EmbraceIT Ltd.
+// //Copyright Shaquille Etienne.
 
 #include "BattleTank.h"
 #include "TankTrack.h"
